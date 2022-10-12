@@ -1,0 +1,15 @@
+header {
+    height: 40vh;
+    background-color: #d0d0d0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+img {
+    height: 100%;
+}
