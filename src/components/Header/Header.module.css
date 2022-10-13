@@ -1,13 +1,13 @@
 header {
-    height: 40vh;
-    background-color: #d0d0d0;
+    height: 35vh;
+    background-color: #f2f2f2;
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    height: 35vh;
 }
 
 img {
