@@ -12,34 +12,52 @@ const Calculator = () => {
 
   const [custo1, setCusto1] = useState(0);
   const [custo2, setCusto2] = useState(0);
-  
-  const [resultado, setResultado] = useState(0);
+
+  const [custoBloco, setCustoBloco] = useState(0);
+  const [custoPiso, setCustoPiso] = useState(0);
+  const [adicional, setAdicional] = useState(0);
+  const [total, setTotal] = useState(0);
 
   function handleClick(e) {
     e.preventDefault();
+
     setBloco((parseFloat(comodo) / parseFloat(bloco)) * 1000);
     setPiso((parseFloat(comodo) / parseFloat(piso)) * 100);
 
     setResBloco((parseFloat(comodo) / parseFloat(bloco)) * 100 * 10);
     setResPiso((parseFloat(comodo) / parseFloat(piso)) * 100);
 
-    setResultado(
-      (parseFloat(custo2) / 1000 * parseFloat(resBloco) +
-        parseFloat(custo1)) * parseFloat(resPiso)
-    );
-
     useEffect(() => {
       setResPiso();
       setResBloco();
-      setResultado();
-    }, []);
+      setCustoBloco();
+      setCustoPiso();
+      setAdicional();
+      setTotal();
+    }, [comodo, bloco, piso, custo1, custo2]);
   }
+
+  setTimeout(() => {
+    
+    setCustoBloco((parseFloat(custo2) / 1000) * parseFloat(resBloco));
+    
+    setCustoPiso(parseFloat(custo1) * parseFloat(resPiso));
+    
+    setAdicional((parseFloat(custoBloco) + parseFloat(custoPiso)) * 0.08);
+    
+    setTotal(
+      parseFloat(custoBloco) + parseFloat(custoPiso) + parseFloat(adicional)
+    );
+  }, "500");
 
   function reset(e) {
     e.preventDefault();
     setResBloco(0);
     setResPiso(0);
-    setResultado(0);
+    setCustoBloco(0);
+    setCustoPiso(0);
+    setAdicional(0);
+    setTotal(0);
 
     setComodo({
       comodo: "",
@@ -142,9 +160,28 @@ const Calculator = () => {
         </div>
 
         <div className={S.resultados}>
-          <p>Blocos necessários: {resBloco.toFixed(0)}</p>
-          <p>Piso necessário: {resPiso.toFixed(1)} M²</p>
-          <p>CUSTO TOTAL: R$ {resultado.toFixed(2)}</p>
+          <p>
+            Blocos necessários:
+            <span className={S.cor}> {resBloco.toFixed(0)}</span>
+          </p>
+          <p>
+            Custo bloco:
+            <span className={S.cor}> R$ {custoBloco.toFixed(2)}</span>
+          </p>
+          <p>
+            Piso necessário:
+            <span className={S.cor}> {resPiso.toFixed(1)} M²</span>
+          </p>
+          <p>
+            Custo piso: <span className={S.cor}> R$ {custoPiso.toFixed(2)}</span>
+          </p>
+          <p>
+            Adicional 8% (perda):
+            <span className={S.cor}> R$ {adicional.toFixed(2)}</span>
+          </p>
+          <p>
+            TOTAL: <span className={S.cor}> R$ {total.toFixed(2)}</span>
+          </p>
         </div>
       </form>
     </section>
