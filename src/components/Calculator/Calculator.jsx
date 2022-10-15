@@ -3,6 +3,7 @@ import S from "./Calculator.module.css";
 
 const Calculator = () => {
   const [comodo, setComodo] = useState(0);
+
   const [bloco, setBloco] = useState(0);
   const [resBloco, setResBloco] = useState(0);
 
@@ -11,35 +12,34 @@ const Calculator = () => {
 
   const [custo1, setCusto1] = useState(0);
   const [custo2, setCusto2] = useState(0);
+  
   const [resultado, setResultado] = useState(0);
 
   function handleClick(e) {
-    const calculoBloco = () => {
-      setResBloco(parseFloat(bloco) * parseFloat(comodo));
-    };
+    e.preventDefault();
+    setBloco((parseFloat(comodo) / parseFloat(bloco)) * 1000);
+    setPiso((parseFloat(comodo) / parseFloat(piso)) * 100);
 
-    const calculoPiso = () => {
-      setResPiso(parseFloat(piso) * parseFloat(comodo));
-    };
+    setResBloco((parseFloat(comodo) / parseFloat(bloco)) * 100 * 10);
+    setResPiso((parseFloat(comodo) / parseFloat(piso)) * 100);
 
-    const total = () => {
-      setResultado(parseFloat(setResBloco) * parseFloat(setCusto2));
-      setResultado(parseFloat(setResPiso) * parseFloat(setCusto1));
-      setResultado(parseFloat(setResultado) * 0.08);
-    };
+    setResultado(
+      (parseFloat(custo2) / 1000 * parseFloat(resBloco) +
+        parseFloat(custo1)) * parseFloat(resPiso)
+    );
 
     useEffect(() => {
-      setResPiso(calculoPiso());
-      setResBloco(calculoBloco());
-      setResultado(total());
-    }, [bloco, piso, resultado]);
+      setResPiso();
+      setResBloco();
+      setResultado();
+    }, []);
   }
 
   function reset(e) {
     e.preventDefault();
-    setResultado(0);
     setResBloco(0);
     setResPiso(0);
+    setResultado(0);
 
     setComodo({
       comodo: "",
@@ -120,13 +120,13 @@ const Calculator = () => {
             max="1000"
             name="custo2"
             id="custo2"
-            placeholder="R$ 500"
+            placeholder="R$ 550,00"
             required={true}
             value={custo2.custo2}
             onChange={(e) => setCusto2(e.target.value)}
           />
         </div>
-        <div className={S.bottons}>
+        <div className={S.buttons}>
           <input
             type="submit"
             value="CALCULAR"
@@ -142,9 +142,9 @@ const Calculator = () => {
         </div>
 
         <div className={S.resultados}>
-          <p>Blocos necessários: {resBloco}</p>
-          <p>Piso necessário: {resPiso} M²</p>
-          <p>CUSTO TOTAL: R$ {resultado}</p>
+          <p>Blocos necessários: {resBloco.toFixed(0)}</p>
+          <p>Piso necessário: {resPiso.toFixed(1)} M²</p>
+          <p>CUSTO TOTAL: R$ {resultado.toFixed(2)}</p>
         </div>
       </form>
     </section>
