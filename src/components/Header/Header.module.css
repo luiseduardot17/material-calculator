@@ -13,3 +13,11 @@ header {
 img {
     height: 100%;
 }
+
+.title {
+    width: 25%;
+}
+
+.title h2 {
+    color: #008200;
+}
