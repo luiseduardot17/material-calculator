@@ -5,6 +5,10 @@
 ## 📸 Imagem da aplicação
 ![Capturar](https://user-images.githubusercontent.com/102761201/196002136-f6690142-4d53-4976-80d2-930962c39428.PNG)
 
+## 🔼 Link do deploy no Vercel:
+```
+https://material-calculator-bice.vercel.app/
+```
 
 ## 🎯 Objetivo
 O objetivo desse desafio é avaliar o conhecimento e capacidade de execução de testes para desenvolvimento fullstack por Resilientes.
