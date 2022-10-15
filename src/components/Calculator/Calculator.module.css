@@ -31,6 +31,7 @@
 .resultados {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100%;
   background-color: #008200;
@@ -73,4 +74,8 @@ input {
 
 .btn:hover {
   border: 2px solid #f8cc1c;
+}
+
+.cor {
+    color: #f8cc1c;
 }
