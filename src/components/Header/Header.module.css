@@ -35,17 +35,18 @@ img {
 @media screen and (max-width: 768px) {
 
     header {
-        height: 30vh;
+        height: 40vh;
     }
 
     .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding-top: 120px;
     }
 
     img {
-        height: 60%;
+        height: 180px;
     }
 
     .title {
