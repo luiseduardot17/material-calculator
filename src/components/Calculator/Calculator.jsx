@@ -176,7 +176,7 @@ const Calculator = () => {
             Custo piso: <span className={S.cor}> R$ {custoPiso.toFixed(2)}</span>
           </p>
           <p>
-            Adicional 8% (perda):
+            Adicional 8% (desperdício):
             <span className={S.cor}> R$ {adicional.toFixed(2)}</span>
           </p>
           <p>
